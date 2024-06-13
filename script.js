@@ -1,16 +1,14 @@
 const container = document.querySelector(".container");
-
 // setting up sketch pad
 const pad = (n) => {
+  const boxSize = container.clientWidth / n;
   for (let i = 0; i < n * n; i++) {
     const div = document.createElement("div");
     div.classList.add("etch");
     container.appendChild(div);
-    div.setAttribute(
-      "style",
-      "border: 1px solid black; width: 30px; height: 30px; "
-    );
+    div.setAttribute("style", `width: ${boxSize}px; height: ${boxSize}px;`);
   }
+  // adding color to sketch pad
   const etch = document.querySelectorAll(".etch");
   etch.forEach(function (divs) {
     divs.addEventListener("mouseover", function () {
@@ -18,8 +16,6 @@ const pad = (n) => {
     });
   });
 };
-
-// adding color to sketch pad
 
 // removing all divs from sketch pad
 const erase = () => {
@@ -41,9 +37,13 @@ reset.addEventListener("click", function () {
 // size button
 const size = document.querySelector("#size");
 size.addEventListener("click", function () {
-  erase();
   let gridSize = prompt("Enter a size for the grid (n by n with a max of 100)");
-  pad(gridSize);
+  if (gridSize > 100) {
+    alert("Cannot enter more than 100");
+  } else {
+    erase();
+    pad(gridSize);
+  }
 });
 
 // creation of pad
