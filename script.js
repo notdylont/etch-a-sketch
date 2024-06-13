@@ -12,7 +12,10 @@ const pad = (n) => {
   const etch = document.querySelectorAll(".etch");
   etch.forEach(function (divs) {
     divs.addEventListener("mouseover", function () {
-      divs.style.backgroundColor = "blue";
+      divs.style.backgroundColor = `rgb(${color(1, 255)}, ${color(
+        1,
+        255
+      )}, ${color(1, 255)})`;
     });
   });
 };
@@ -38,13 +41,17 @@ reset.addEventListener("click", function () {
 const size = document.querySelector("#size");
 size.addEventListener("click", function () {
   let gridSize = prompt("Enter a size for the grid (n by n with a max of 100)");
-  if (gridSize > 100) {
-    alert("Cannot enter more than 100");
+  if (gridSize > 100 || gridSize === null) {
+    alert("Enter a valid grid size");
   } else {
     erase();
     pad(gridSize);
   }
 });
-
 // creation of pad
 pad(16);
+
+// function to calculate rgb values
+function color(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}

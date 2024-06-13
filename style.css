@@ -1,14 +1,24 @@
 body {
     display: flex;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     flex-direction: column;
     justify-content: center;
     margin: 0;
     align-items: center;
+    background-color: beige;
+}
+
+#reset, #size {
+    border-color: black;
+    background-color: black;
+    font-weight: bold;
+    padding: 6px;
+    border-radius: 12px;
+    color: white;
 }
 
 .buttons {
     display: flex;
-    flex-direction: column;
     gap: 8px;
     margin-bottom: 32px;
 }
@@ -20,4 +30,6 @@ body {
     width: 520px;
     height: 520px;
     border: 1px solid black;
+    box-shadow: 10px 10px 100px gray;
+    background-color: white;
 }
